@@ -27,7 +27,7 @@ export default class UserService {
       }
 
       const token = Jwt.generateToken(payload)
-      return { type: null, message: token }
+      return { type: null, message: 'User successfully created', token }
     } catch (error) {
       console.log(error)
       return {
