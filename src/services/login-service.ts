@@ -21,12 +21,16 @@ export default class LoginService {
         const passwordMatch = await bcrypt.compare(password, user.password)
 
         if (!passwordMatch) {
-          return { type: 'UNAUTHORIZED', message: 'Invalid password' }
+          return {
+            type: 'UNAUTHORIZED',
+            message: 'Invalid username or password',
+          }
         } else if (!user.active) {
           return { type: 'UNAUTHORIZED', message: 'User is not active' }
         }
       }
-      if (!user) return { type: 'UNAUTHORIZED', message: 'Invalid fields' }
+      if (!user)
+        return { type: 'UNAUTHORIZED', message: 'Invalid username or password' }
 
       const { id, name, role } = user
 
@@ -42,7 +46,7 @@ export default class LoginService {
         message: { id, name, email, role, token },
       }
     } catch (error) {
-      return { type: 'UNAUTHORIZED', message: 'Invalid fields' }
+      return { type: 'UNAUTHORIZED', message: 'Invalid username or password' }
     }
   }
 }
