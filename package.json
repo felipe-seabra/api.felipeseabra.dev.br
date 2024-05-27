@@ -1,5 +1,5 @@
 {
-  "name": "biancaefelipe-api",
+  "name": "portfolio-api",
   "version": "1.0.0",
   "description": "API para site de casamento",
   "main": "server.ts",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/felipe-seabra/biancaefelipe-api.git"
+    "url": "git+ssh://git@github.com/felipe-seabra/portfolio-api.git"
   },
   "author": "Felipe Seabra",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/felipe-seabra/biancaefelipe-api/issues"
+    "url": "https://github.com/felipe-seabra/portfolio-api/issues"
   },
-  "homepage": "https://github.com/felipe-seabra/biancaefelipe-api#readme",
+  "homepage": "https://github.com/felipe-seabra/portfolio-api#readme",
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/bcrypt": "^5.0.2",
