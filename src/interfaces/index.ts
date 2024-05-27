@@ -1,4 +1,4 @@
-import { Request } from 'express';
+import { Request } from 'express'
 
 // Define TypeScript enums corresponding to the Prisma enums
 export enum ButtonType {
@@ -20,36 +20,36 @@ export enum Role {
 }
 
 export interface IUser {
-  name: string;
-  email: string;
-  password: string;
-  active: boolean;
-  role: Role;  // Use the Role enum
+  name: string
+  email: string
+  password: string
+  active: boolean
+  role: Role // Use the Role enum
 }
 
 export interface ICompany {
-  name: string;
-  title: string;
-  description: string[];
-  logo: string;
-  domain: string;
+  name: string
+  title: string
+  description: string[]
+  logo: string
+  domain: string
 }
 
 export interface ISocial {
-  name: string;
-  logo: Logo;  // Use the Logo enum
-  url: string;
-  buttonType: ButtonType;  // Use the ButtonType enum
-  active: boolean;
+  name: string
+  logo: Logo // Use the Logo enum
+  url: string
+  buttonType: ButtonType // Use the ButtonType enum
+  active: boolean
 }
 
 export interface IAuthRequest extends Request {
-  user?: IUser;
+  user?: IUser
 }
 
 export interface Payload {
   dataValues: {
-    name: string;
-    email: string;
-  };
+    name: string
+    email: string
+  }
 }

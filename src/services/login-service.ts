@@ -22,6 +22,8 @@ export default class LoginService {
 
         if (!passwordMatch) {
           return { type: 'UNAUTHORIZED', message: 'Invalid password' }
+        } else if (!user.active) {
+          return { type: 'UNAUTHORIZED', message: 'User is not active' }
         }
       }
       if (!user) return { type: 'UNAUTHORIZED', message: 'Invalid fields' }
