@@ -7,62 +7,53 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  MASTER
+  ADMIN
+  USER
+}
+
 model User {
   id              String        @id @default(uuid())
   name            String
   email           String        @unique
   password        String
-  isAdmin         Boolean
-  isMaster        Boolean?      @default(false)
+  active          Boolean
+  role            Role
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }
 
-model Gifts {
-  id              String        @id @default(uuid())
-  name            String        @unique
-  description     String
-  amount          Int
-  available       Boolean
-  price           Float
-  imageUrl        String
-  paymentMethod   String
-  guests          Guest[]
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-}
-
-model MessageForTheCouple {
+model Company {
   id              String        @id @default(uuid())
   name            String
-  email           String        @unique
-  message         String[]
+  title           String
+  description     String[]
+  logo            String
+  domain          String
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }
 
-model Supplier {
-  id              String        @id @default(uuid())
-  name            String
-  phone           String
-  email           String?        @unique
-  service         String
-  contractedValue Float
-  amountPaid      Float
-  observation     String[]
-  opened          Boolean
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+enum ButtonType {
+  REPOSITORIO
+  SITE
 }
 
-model Guest {
+enum Logo {
+  INSTAGRAM
+  LINKEDIN
+  FACEBOOK
+  EMAIL
+}
+
+model Social {
   id              String        @id @default(uuid())
   name            String
-  parentage       String
-  paying          Boolean
-  confirmed       Boolean
-  gift            Gifts         @relation(fields: [giftId], references: [id])
-  giftId          String
+  logo            Logo
+  url             String
+  buttonType      ButtonType
+  active          Boolean
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }

@@ -2,13 +2,13 @@ version: "3.8"
 
 services:
   postgres:
-    container_name: wedding-database
+    container_name: portfolio
     image: postgres:10.3
     restart: always
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=wedding-database
+      - POSTGRES_DB=portfolio
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:

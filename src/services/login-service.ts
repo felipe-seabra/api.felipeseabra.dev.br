@@ -26,7 +26,7 @@ export default class LoginService {
       }
       if (!user) return { type: 'UNAUTHORIZED', message: 'Invalid fields' }
 
-      const { isMaster, isAdmin, name, id } = user
+      const { id, name, role } = user
 
       const payload: Payload = {
         dataValues: {
@@ -37,7 +37,7 @@ export default class LoginService {
       const token = Jwt.generateToken(payload)
       return {
         type: null,
-        message: { token, isAdmin, name, email, id, isMaster },
+        message: { id, name, email, role, token },
       }
     } catch (error) {
       return { type: 'UNAUTHORIZED', message: 'Invalid fields' }

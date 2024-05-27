@@ -1,8 +1,9 @@
 import { Request, Response } from 'express'
 
-import { mapError, errorMap } from '../utils/errorMap'
+import { mapError, errorMap } from '../utils/error-map'
 import { IAuthRequest } from '../interfaces'
-import UserService from '../services/userService'
+
+import UserService from '../services/user-service'
 
 export default class UserController {
   static fildAllUsers = async (_req: Request, res: Response) => {
@@ -15,9 +16,9 @@ export default class UserController {
     res.status(200).json(message)
   }
 
-  static findById = async (_req: Request, res: Response) => {
+  static findUserById = async (_req: Request, res: Response) => {
     const { id } = _req.params
-    const { type, message } = await UserService.findById(id)
+    const { type, message } = await UserService.findUserById(id)
 
     if (type)
       return res
@@ -39,11 +40,11 @@ export default class UserController {
     res.status(201).json(message)
   }
 
-  static updateById = async (req: IAuthRequest, res: Response) => {
+  static updateUserById = async (req: IAuthRequest, res: Response) => {
     const { id } = req.params
     const { body } = req
 
-    const { type, message } = await UserService.updateById(body, id)
+    const { type, message } = await UserService.updateUserById(body, id)
 
     if (type)
       return res
@@ -53,9 +54,9 @@ export default class UserController {
     res.status(201).json(message)
   }
 
-  static deleteById = async (req: IAuthRequest, res: Response) => {
+  static deleteUserById = async (req: IAuthRequest, res: Response) => {
     const { id } = req.params
-    const { type, message } = await UserService.deleteById(id)
+    const { type, message } = await UserService.deleteUserById(id)
 
     if (type)
       return res

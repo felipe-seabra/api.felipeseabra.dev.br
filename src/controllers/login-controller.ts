@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { mapError, errorMap } from '../utils/errorMap'
-import LoginService from '../services/loginService'
+import { mapError, errorMap } from '../utils/error-map'
+import LoginService from '../services/login-service'
 
 export default class LoginController {
   static login = async (req: Request, res: Response) => {

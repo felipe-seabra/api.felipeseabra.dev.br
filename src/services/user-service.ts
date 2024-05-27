@@ -44,8 +44,8 @@ export default class UserService {
           id: true,
           name: true,
           email: true,
-          isAdmin: true,
-          isMaster: true,
+          active: true,
+          role: true,
           createdAt: true,
           updatedAt: true,
         },
@@ -59,7 +59,7 @@ export default class UserService {
     }
   }
 
-  static findById = async (id: string) => {
+  static findUserById = async (id: string) => {
     try {
       const result = await prismaClient.user.findUnique({
         where: { id },
@@ -67,8 +67,8 @@ export default class UserService {
           id: true,
           name: true,
           email: true,
-          isAdmin: true,
-          isMaster: true,
+          active: true,
+          role: true,
           createdAt: true,
           updatedAt: true,
         },
@@ -80,7 +80,7 @@ export default class UserService {
     }
   }
 
-  static updateById = async (props: IUser, id: string) => {
+  static updateUserById = async (props: IUser, id: string) => {
     try {
       await prismaClient.user.update({
         where: { id },
@@ -93,7 +93,7 @@ export default class UserService {
     }
   }
 
-  static deleteById = async (id: string) => {
+  static deleteUserById = async (id: string) => {
     try {
       await prismaClient.user.delete({
         where: { id },
