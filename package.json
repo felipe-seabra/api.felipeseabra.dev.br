@@ -1,7 +1,7 @@
 {
   "name": "portfolio-api",
   "version": "1.0.0",
-  "description": "API para site de casamento",
+  "description": "API para portfólio",
   "main": "server.ts",
   "scripts": {
     "dev": "nodemon src/server.ts ",
