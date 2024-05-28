@@ -26,11 +26,11 @@ model User {
 
 model Company {
   id              String        @id @default(uuid())
-  name            String
+  name            String        @unique
   title           String
   description     String[]
   logo            String
-  domain          String
+  domain          String        @unique
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }
