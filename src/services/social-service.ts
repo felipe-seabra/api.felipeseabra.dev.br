@@ -29,15 +29,15 @@ export default class SocialService {
   }
 
   static findSocialById = async (id: string) => {
-    try {
-      const social = await prismaClient.social.findUnique({
-        where: { id },
-      })
+    const social = await prismaClient.social.findUnique({
+      where: { id },
+    })
 
-      return { type: null, message: social }
-    } catch (err) {
+    if (!social) {
       return { type: 'SOCIAL_NOT_FOUND', message: 'Social does not exists' }
     }
+
+    return { type: null, message: social }
   }
 
   static updateSocialById = async (social: ISocial, id: string) => {

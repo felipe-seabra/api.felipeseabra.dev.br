@@ -29,15 +29,13 @@ export default class CompanyService {
   }
 
   static findCompanyById = async (id: string) => {
-    try {
-      const company = await prismaClient.company.findUnique({
-        where: { id },
-      })
-
-      return { type: null, message: company }
-    } catch (err) {
+    const company = await prismaClient.company.findUnique({
+      where: { id },
+    })
+    if (!company) {
       return { type: 'COMPANY_NOT_FOUND', message: 'Company does not exists' }
     }
+    return { type: null, message: company }
   }
 
   static updateCompanyById = async (company: ICompany, id: string) => {

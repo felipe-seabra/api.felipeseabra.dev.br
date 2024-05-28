@@ -60,24 +60,24 @@ export default class UserService {
   }
 
   static findUserById = async (id: string) => {
-    try {
-      const result = await prismaClient.user.findUnique({
-        where: { id },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          active: true,
-          role: true,
-          createdAt: true,
-          updatedAt: true,
-        },
-      })
+    const result = await prismaClient.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        active: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    })
 
-      return { type: null, message: result }
-    } catch (err) {
+    if (!result) {
       return { type: 'USER_NOT_FOUND', message: 'User does not exists' }
     }
+
+    return { type: null, message: result }
   }
 
   static updateUserById = async (props: IUser, id: string) => {
