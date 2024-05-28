@@ -4,6 +4,7 @@ import { user } from './routes/user-router'
 import { login } from './routes/login-router'
 import { company } from './routes/company-router'
 import { social } from './routes/social-router'
+import { project } from './routes/project-router'
 
 const app = express()
 
@@ -23,5 +24,6 @@ app.use('/v1/login', login)
 app.use('/v1/user', user)
 app.use('/v1/company', company)
 app.use('/v1/social', social)
+app.use('/v1/project', project)
 
 export default app

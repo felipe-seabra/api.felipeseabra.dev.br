@@ -1,4 +1,5 @@
 import express from 'express'
+
 import Auth from '../middlewares/auth-middleware'
 import SocialMiddleware from '../middlewares/social-middleware'
 import SocialController from '../controllers/social-controller'

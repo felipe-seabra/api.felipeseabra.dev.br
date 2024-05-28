@@ -49,3 +49,19 @@ export const updateSocialSchema = Joi.object({
   url: Joi.string().uri(),
   active: Joi.boolean(),
 }).or('name', 'url', 'active')
+
+export const newProjectSchema = Joi.object({
+  name: Joi.string().min(1).required(),
+  image: Joi.string().uri().required(),
+  description: Joi.array().items(Joi.string()).required(),
+  url: Joi.string().uri().required(),
+  active: Joi.boolean().required(),
+})
+
+export const updateProjectSchema = Joi.object({
+  name: Joi.string().min(1),
+  image: Joi.string().uri(),
+  description: Joi.array().items(Joi.string()),
+  url: Joi.string().uri(),
+  active: Joi.boolean(),
+}).or('name', 'image', 'description', 'url', 'active')
