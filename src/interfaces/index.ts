@@ -1,17 +1,6 @@
 import { Request } from 'express'
 
 // Define TypeScript enums corresponding to the Prisma enums
-export enum ButtonType {
-  REPOSITORIO = 'REPOSITORIO',
-  SITE = 'SITE',
-}
-
-export enum Logo {
-  INSTAGRAM = 'INSTAGRAM',
-  LINKEDIN = 'LINKEDIN',
-  FACEBOOK = 'FACEBOOK',
-  EMAIL = 'EMAIL',
-}
 
 export enum Role {
   MASTER = 'MASTER',
@@ -37,10 +26,15 @@ export interface ICompany {
 
 export interface ISocial {
   name: string
-  logo: Logo // Use the Logo enum
   url: string
-  buttonType: ButtonType // Use the ButtonType enum
   active: boolean
+}
+
+export interface IProject {
+  name: string
+  image: string
+  description: string[]
+  url: string
 }
 
 export interface IAuthRequest extends Request {

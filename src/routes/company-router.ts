@@ -6,8 +6,8 @@ import CompanyController from '../controllers/company-controller'
 
 export const company = express.Router()
 
-company.get('/', Auth.authToken, CompanyController.findAllCompanys)
-company.get('/:id', Auth.authToken, CompanyController.findCompanyById)
+company.get('/', CompanyController.findAllCompanys)
+company.get('/:id', CompanyController.findCompanyById)
 company.post(
   '/',
   Auth.authToken,

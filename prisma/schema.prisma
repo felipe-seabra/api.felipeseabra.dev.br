@@ -35,25 +35,21 @@ model Company {
   updatedAt       DateTime      @updatedAt
 }
 
-enum ButtonType {
-  REPOSITORIO
-  SITE
-}
-
-enum Logo {
-  INSTAGRAM
-  LINKEDIN
-  FACEBOOK
-  EMAIL
-}
-
 model Social {
   id              String        @id @default(uuid())
   name            String
-  logo            Logo
-  url             String
-  buttonType      ButtonType
+  url             String        @unique
   active          Boolean
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Project {
+  id              String        @id @default(uuid())
+  name            String
+  image           String
+  description     String[]
+  url             String        @unique
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 }

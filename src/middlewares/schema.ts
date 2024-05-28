@@ -37,3 +37,15 @@ export const updateCompanySchema = Joi.object({
   logo: Joi.string().uri(),
   domain: Joi.string().uri(),
 }).or('name', 'title', 'description', 'logo', 'domain')
+
+export const newSocialSchema = Joi.object({
+  name: Joi.string().min(1).required(),
+  url: Joi.string().uri().required(),
+  active: Joi.boolean().required(),
+})
+
+export const updateSocialSchema = Joi.object({
+  name: Joi.string().min(1),
+  url: Joi.string().uri(),
+  active: Joi.boolean(),
+}).or('name', 'url', 'active')
