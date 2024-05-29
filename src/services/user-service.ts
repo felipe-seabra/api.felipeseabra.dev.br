@@ -82,6 +82,12 @@ export default class UserService {
 
   static updateUserById = async (props: IUser, id: string) => {
     try {
+      // update password if it's provided
+      if (props.password) {
+        const salt = await bcrypt.genSalt(10)
+        props.password = await bcrypt.hash(props.password, salt)
+      }
+
       await prismaClient.user.update({
         where: { id },
         data: { ...props },
