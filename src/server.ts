@@ -15,5 +15,5 @@ app.get('/', (_req: Request, res: Response) => {
 })
 
 app.listen(port, () =>
-  console.log('REST API server ready at: http://localhost:3000/v1'),
+  console.log('REST API server ready at: http://localhost:3001/v1'),
 )

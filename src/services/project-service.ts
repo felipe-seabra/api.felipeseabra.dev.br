@@ -41,6 +41,18 @@ export default class ProjectService {
     return { type: null, message: project }
   }
 
+  static findProjectBySlug = async (slug: string) => {
+    const project = await prismaClient.project.findUnique({
+      where: { slug },
+    })
+
+    if (!project) {
+      return { type: 'PROJECT_NOT_FOUND', message: 'Project does not exists' }
+    }
+
+    return { type: null, message: project }
+  }
+
   static updateProjectById = async (project: IProject, id: string) => {
     try {
       await prismaClient.project.update({

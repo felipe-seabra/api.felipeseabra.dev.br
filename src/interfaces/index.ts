@@ -40,6 +40,7 @@ export interface IProject {
 }
 
 export interface IAuthRequest extends Request {
+  isId?: boolean
   user?: IUser
 }
 

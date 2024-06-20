@@ -1,4 +1,6 @@
-import express from 'express'
+import express, { Response } from 'express'
+
+import { IAuthRequest } from '../interfaces'
 
 import Auth from '../middlewares/auth-middleware'
 import ProjectMiddleware from '../middlewares/project-middleware'
@@ -7,7 +9,15 @@ import ProjectController from '../controllers/project-controller'
 export const project = express.Router()
 
 project.get('/', ProjectController.findAllProjects)
-project.get('/:id', ProjectController.findProjectById)
+
+project.get('/:idOrSlug', ProjectMiddleware.identifyProjectParam, (req: IAuthRequest, res: Response) => {
+  if (req.isId) {
+    ProjectController.findProjectById(req, res);
+  } else {
+    ProjectController.findProjectBySlug(req, res);
+  }
+})
+
 project.post(
   '/',
   Auth.authToken,

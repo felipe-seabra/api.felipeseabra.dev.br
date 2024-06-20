@@ -43,4 +43,21 @@ export default class ProjectMiddleware {
         .send({ message: 'Some required fields are missing or invalid' })
     }
   }
+
+  static identifyProjectParam = (
+    req: IAuthRequest,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    const { idOrSlug } = req.params;
+
+    // Expressão regular para validar UUID v4
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+    const isId = uuidRegex.test(idOrSlug);
+
+    req.isId = isId;
+
+    next();
+  }
 }

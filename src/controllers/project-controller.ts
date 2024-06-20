@@ -27,8 +27,20 @@ export default class ProjectController {
   }
 
   static findProjectById = async (req: Request, res: Response) => {
-    const { id } = req.params
-    const { type, message } = await ProjectService.findProjectById(id)
+    const { idOrSlug } = req.params
+    const { type, message } = await ProjectService.findProjectById(idOrSlug)
+
+    if (type)
+      return res
+        .status(mapError(type as keyof typeof errorMap))
+        .json({ message })
+
+    return res.status(200).json(message)
+  }
+
+  static findProjectBySlug = async (req: Request, res: Response) => {
+    const { idOrSlug } = req.params
+    const { type, message } = await ProjectService.findProjectBySlug(idOrSlug)
 
     if (type)
       return res
