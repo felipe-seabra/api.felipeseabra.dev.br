@@ -36,6 +36,7 @@ export interface IProject {
   description: string[]
   url: string
   active: boolean
+  slug?: string
 }
 
 export interface IAuthRequest extends Request {
