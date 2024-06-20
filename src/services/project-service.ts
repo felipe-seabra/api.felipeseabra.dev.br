@@ -1,12 +1,13 @@
 import { prismaClient } from '../database'
 
 import { IProject } from '../interfaces'
+import { createSlug } from '../utils/create-slug'
 
 export default class ProjectService {
   static createNewProject = async (project: IProject) => {
     try {
       await prismaClient.project.create({
-        data: { ...project },
+        data: { ...project, slug: createSlug(project.name) },
       })
 
       return { type: null, message: 'Project created successfully' }
@@ -44,7 +45,7 @@ export default class ProjectService {
     try {
       await prismaClient.project.update({
         where: { id },
-        data: { ...project },
+        data: { ...project, slug: createSlug(project.name) },
       })
 
       return { type: null, message: 'Project updated successfully' }
